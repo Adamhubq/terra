@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
+import { User } from './users/users';
+import { Departament } from './users/departament';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'terra';
+	static Userobjects: object = new User();
+	static Departobjects: object = new Departament();
+	title: 'terra';
+	constructor(){}
 }

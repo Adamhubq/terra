@@ -1,0 +1,132 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Вы действительно хотите удалить пользователя
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn bg-danger" (click)="delete(content);d('Cross click')">
+    	Да
+    </button>
+  	<button type="button" class="bg-secondary" aria-label="Close" (click)="d('Cross click')">
+      Нет
+    </button>
+  </div>
+</ng-template>
+<div class="container">
+	<form>
+	  	<div class="row">
+		  	<div class="form-group col-12 col-md-6">
+			    <label for="updateName">
+			    	Имя
+			    </label>
+			    <input 
+			    	autocomplete="off"
+			    	[(ngModel)]="updateName"
+	      			[ngModelOptions]="{standalone: true}"
+				    type="text" 
+				    class="form-control" 
+				    id="updateName" 
+				    placeholder="{{showUser.name}}">
+			    <small class="form-text text-muted">
+			    	Введите новое имя
+			    </small>
+		 	</div>
+
+		  <div class="form-group col-12 col-md-6">
+		    <label for="updateSurname">
+		    	Фамилия
+		    </label>
+		    <input 
+		    	autocomplete="off"
+		    	[(ngModel)]="updateSurname"
+	      		[ngModelOptions]="{standalone: true}"
+		    	type="text" 
+		    	class="form-control" 
+		    	id="Surname"
+		    	placeholder="{{showUser.surname}}">
+		    <small class="form-text text-muted">
+		    	Введите новую фамилию
+		    </small>
+		</div>
+	</div>
+
+	<div class="row">
+	  <div class="form-group col-12 col-md-6">
+	    <div class="container row">
+	    	<label for="updateSurname">
+		    	Дата регистрации
+		    </label>
+	    </div>
+	    <div class="container row">
+		    <ngb-datepicker 
+				#dp [(ngModel)]="model" 
+				(navigate)="date = model"
+				[ngModelOptions]="{standalone: true}">
+			</ngb-datepicker>
+	    </div>
+	  </div>
+
+		<div class="form-group col-12 col-md-6">
+	      <label for="inputState">Отдел</label>
+	      <select 
+	      	id="inputState" 
+	      	class="form-control" 
+	      	[(ngModel)]="showUser.departament"
+	      	[ngModelOptions]="{standalone: true}"
+	      	>
+	        <option 
+			
+	        *ngFor="let depart of departament">
+	        	{{depart.name}}
+	        </option>
+
+	      </select>
+	    </div>
+	</div>
+	<div class="form-group col-12 col-md-6">
+		<div class="row d-block mb-2">
+			<label for="inputState">Отдел</label>
+			<input 
+				disabled
+				class="form-control" 
+				type="text" 
+				placeholder="{{showUser.guid}}" 
+				[(ngModel)]="updateGuid"
+				[ngModelOptions]="{standalone: true}">
+		</div>
+		<div class="row">
+			<button 
+
+				type="submit" 
+				class="btn btn-success" 
+				(click)="newGuid()">
+				Сгененрировать guid
+			</button>
+		</div>
+		<div class="row mt-5">
+			<div class="col-12 col-md-6 ml-0">
+				<button type="submit" class="btn btn-primary" (click)="save(showUser.id !== global.arrUser.length)">
+					{{showUser.id !== global.arrUser.length ? 'Сохранить' : 'Создать'}}
+				</button>
+			</div>
+			<div class="col-12 col-md-6 mr-0">
+				<button *ngIf="showUser.id !== global.arrUser.length" type="submit" class="btn btn-danger" (click)="showModalDelete(content)">Удалить</button>
+				<button 
+					type="submit" 
+					*ngIf="showUser.id === global.arrUser.length"
+					class="btn btn-danger" 
+					(click) = "clear()">
+					Очистить
+				</button>
+			</div>
+		</div>
+	</div>
+	
+	
+	</form>
+</div>

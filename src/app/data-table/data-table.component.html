@@ -1,0 +1,119 @@
+<div class="mat-elevation-z8 data-table">
+<table mat-table [dataSource]="dataSource" class="table thead-dark ">
+  
+  <!-- Surname Column -->
+  <ng-container matColumnDef="surname">
+    <th mat-header-cell *matHeaderCellDef> Фамилия </th>
+      <td mat-cell *matCellDef="let element"> 
+        <a 
+        class="double-click" 
+        routerLink="/update-user" 
+        [queryParams]="{'idUser': element.id}">
+          {{element.surname}}
+        </a>
+      </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Имя </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- date Column -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Дата регистрации </th>
+    <td mat-cell *matCellDef="let element"> {{element.date | date:'yyyy-MM-dd hh:mm'}} </td>
+  </ng-container>
+
+  <!-- departament Column -->
+  <ng-container matColumnDef="departament">
+    <th mat-header-cell *matHeaderCellDef> Департамент </th>
+    <td mat-cell *matCellDef="let element">     
+      {{element.departament}} 
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+  
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+<div class="row container">
+  <div class="col-12 col-md-6">
+    <div class="col-12">
+      <label for="updateName">
+        Найти фамилию
+      </label>
+      <div>
+        <input matInput 
+        [(ngModel)]="filter" 
+        (keyup)="applyFilter({flag:false, data:$event.target.value})" 
+        placeholder="Фамилия">
+      </div>
+      <small class="form-text text-muted">
+        Введите фамилию целиком или вхождения
+      </small>
+    </div>
+
+    
+  </div>
+  <div class="col-12 col-md-6 text-md-right pb-2 ml-3 mt-4 ml-md-0 mt-md-0">
+    <div>
+      <label for="updateName">
+        Дата регистрации
+      </label>
+    </div>
+    <ngbd-datapicker-range (onChanged)="onChanged($event)"></ngbd-datapicker-range>
+    <small class="form-text text-muted">
+      Выберите дату от и до
+    </small>
+  </div>
+</div>
+
+</div>
+
+
+
+<!-- 
+<div class="mat-elevation-z8 data-table">
+  <table mat-table class="table thead-dark " matSort aria-label="Elements">
+    
+
+    <ng-container matColumnDef="surname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Фамилия</th>
+      <td mat-cell *matCellDef="let row">{{row.surname}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th  mat-header-cell *matHeaderCellDef mat-sort-header>Имя</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата регистрации</th>
+      <td mat-cell *matCellDef="let row">{{row.date | date:'yyyy-MM-dd hh:mm'}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="departament">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Отдел</th>
+      <td mat-cell *matCellDef="let row">
+        {{objDepart.arrDep[row.departament].name}}
+      </td>
+    </ng-container>
+    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 15, 25]">
+  </mat-paginator>
+</div> -->

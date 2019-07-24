@@ -1,0 +1,88 @@
+<div class="alert alert-danger" [ngClass]="{'d-none': !alert, 'd-block': alert}" role="alert">
+    Введите в поиск строку
+</div>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+  	  [ngClass]="{'d-none': !flag}"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item 
+        routerLink="/list">
+        Список пользователей
+      </a>
+      <div>
+        <div class="input-group">
+          <input 
+            type="text" 
+            class="form-control"
+            placeholder="{{placeholder}}" 
+            aria-label="Recipient's username" 
+            [(ngModel)]="searchStr"
+            aria-describedby="basic-addon2">
+
+          <div class="input-group-append">
+
+            <button 
+              class="btn btn-outline-success" 
+              type="button" 
+              (click)="search()">
+                Поиск
+              </button>
+          </div>
+        </div>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="flag">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <a 
+        routerLink="/" 
+        class="link-home">
+        <span>Terra_task</span>
+      </a>
+      <div 
+        class="link-container align-items-center" 
+        [ngClass]="{'d-none': flag}">
+        <a routerLink="/" class="d-flex align-items-center">
+          <mat-icon class="link-item" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+        </a>
+	      <a class="link-item" 
+            routerLink="/list">
+            Список пользователей
+        </a>
+        <div class="input-group">
+          <input 
+            type="text" 
+            class="form-control"
+            placeholder="{{placeholder}}" 
+            aria-label="Recipient's username" 
+            [(ngModel)]="searchStr"
+            aria-describedby="basic-addon2">
+
+          <div class="input-group-append">
+
+            <button 
+              class="btn btn-outline-success" 
+              type="button" 
+              (click)="search()">
+                Поиск
+              </button>
+          </div>
+        </div>
+      </div>
+    </mat-toolbar>
+    <ng-content></ng-content>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
