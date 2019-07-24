@@ -93,7 +93,7 @@ export class DataTableComponent {
     this.dataSource.filter = filterValue;
   }
   openUser(id) {
-    this.router.navigate(['/update-user'], { queryParams: { idUser: id } });
+    this.router.navigate(['/update-user'], {queryParams: {idUser: id } });
     console.log(id)
   }
 

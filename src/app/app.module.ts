@@ -26,7 +26,7 @@ import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
 
 const appRoutes: Routes =[
-    { path: '', component: AppComponent},
+    { path: '', component: DataTableComponent},
     { path: 'list', component: DataTableComponent},
     { path: 'update-user', component: DetailPageComponent},
     

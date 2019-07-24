@@ -1,3 +1,9 @@
+
+/*
+* Компонент меню.
+* для адаптивности использованы брекпоинты.
+*/
+
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';

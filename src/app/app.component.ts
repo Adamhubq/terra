@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
-import { User } from './users/users';
-import { Departament } from './users/departament';
+import { User } from './data-table/users';
+import { Departament } from './data-table/departament';
 
 @Component({
   selector: 'app-root',
