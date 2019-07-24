@@ -13,6 +13,7 @@ td {
 a.double-click {
 	color: #3f51b5;
 	text-decoration: unset;
+	cursor: pointer;
 }
 a.double-click {
 	color: #3f51b5;

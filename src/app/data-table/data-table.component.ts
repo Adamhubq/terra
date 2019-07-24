@@ -1,10 +1,13 @@
+/*
+*  В компоненте отображается список из массива User
+*/
 import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { User } from './users';
 import { Departament } from './departament';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export interface PeriodicElement {
   
@@ -57,7 +60,7 @@ export class DataTableComponent {
   }
 
 
-  constructor(private global: User, private route: ActivatedRoute){
+  constructor(private global: User, private route: ActivatedRoute, private router: Router){
     let flag = false,
       getFilter = '';
       if (Object.keys(this.route.queryParams['value']).length) { 
@@ -87,7 +90,11 @@ export class DataTableComponent {
      this.dataSource.paginator = this.paginator;
   }
   applyFilter(filterValue: any) {
-
     this.dataSource.filter = filterValue;
   }
+  openUser(id) {
+    this.router.navigate(['/update-user'], { queryParams: { idUser: id } });
+    console.log(id)
+  }
+
 }

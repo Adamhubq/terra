@@ -141,6 +141,9 @@ export class DetailPageComponent implements OnInit {
 	this.updateSurname = ''; // вне массива имя и фамилия для 
 	this.updateName = '';    // использования в placeholder
   }
+
+
+
   ngOnInit() {
 
   }

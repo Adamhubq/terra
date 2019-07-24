@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatapickerComponent } from './datapicker/datapicker.component';
 import { FormsModule }   from '@angular/forms';
 import { User } from './data-table/users';
-import { Globals } from './data-table/userss';
+
 import { DetailPageComponent } from './detail-page/detail-page.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
